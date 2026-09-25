@@ -494,19 +494,17 @@
             </div>
 
             <div class="bg-white rounded-3xl p-8 sm:p-12 border border-amber-200 shadow-xl max-w-4xl mx-auto">
-                <form action="https://formspree.io/f/mnpnzoyk" method="POST" class="space-y-6">
-                    <!-- Assunto personalizado no Formspree -->
-                    <input type="hidden" name="_subject" value="[BioCapa] Novo Feedback Acadêmico Recebido!">
-                    <input type="hidden" name="Origem_do_Formulario" value="Feedback Acadêmico / Validação">
+                <form id="academic-form" action="https://formspree.io/f/mnpnzoyk" method="POST" class="space-y-6">
+                    <input type="hidden" name="Formulario" value="Feedback Academico">
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-xs font-bold text-brand-700 mb-2">Seu Nome *</label>
-                            <input type="text" name="Nome_do_Avaliador" required placeholder="Seu nome completo" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-sand-50">
+                            <input type="text" name="Nome" required placeholder="Seu nome completo" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-sand-50">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-brand-700 mb-2">Seu Perfil / Cargo *</label>
-                            <select name="Perfil_do_Avaliador" required class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-sand-50">
+                            <select name="Perfil" required class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-sand-50">
                                 <option value="">Selecione seu perfil...</option>
                                 <option value="Professor / Orientador Acadêmico">Professor / Orientador Acadêmico</option>
                                 <option value="Especialista da Indústria Cosmética">Especialista da Indústria Cosmética</option>
@@ -519,7 +517,7 @@
 
                     <div>
                         <label class="block text-xs font-bold text-brand-700 mb-2">Como você avalia a viabilidade da BioCapa para a redução da pegada ecológica? *</label>
-                        <select name="Avaliacao_de_Viabilidade" required class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-sand-50">
+                        <select name="Avaliacao" required class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-sand-50">
                             <option value="">Escolha uma nota...</option>
                             <option value="Excelente - Potencial real de mercado e alto valor ecológico">Excelente - Potencial real de mercado e alto valor ecológico</option>
                             <option value="Boa - Promissor, depende de adequação de custos industriais">Boa - Promissor, depende de adequação de custos industriais</option>
@@ -530,12 +528,12 @@
 
                     <div>
                         <label class="block text-xs font-bold text-brand-700 mb-2">Comentários, Críticas e Sugestões para o Grupo *</label>
-                        <textarea name="Comentarios_e_Sugestoes" required rows="4" placeholder="Deixe suas observações para colaborar com o aprimoramento do nosso trabalho de graduação..." class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-sand-50"></textarea>
+                        <textarea name="Comentarios" required rows="4" placeholder="Deixe suas observações para colaborar com o aprimoramento do nosso trabalho de graduação..." class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-sand-50"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer">
+                    <button type="submit" id="academic-submit-btn" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer">
                         <i data-lucide="message-square" class="w-4 h-4"></i>
-                        Enviar Feedback Acadêmico
+                        <span>Enviar Feedback Acadêmico</span>
                     </button>
                 </form>
 
@@ -571,7 +569,7 @@
     <script>
         lucide.createIcons();
 
-        // Dynamic Real-Time Calculator
+        // Calculadora ESG Interativa
         const slider = document.getElementById('volume-slider');
         const volumeVal = document.getElementById('volume-val');
         const plasticSaved = document.getElementById('plastic-saved');
@@ -581,19 +579,14 @@
         function updateImpact() {
             if (!slider) return;
             const volume = parseInt(slider.value, 10);
-
-            // Volume label
             volumeVal.innerText = volume.toLocaleString('pt-BR') + ' un';
 
-            // Plastic Saved (~35 grams per package)
             const plasticKg = (volume * 35) / 1000;
             plasticSaved.innerText = plasticKg.toLocaleString('pt-BR', { maximumFractionDigits: 0 }) + ' kg';
 
-            // CO2 Saved (~2.5 kg CO2 saved per kg plastic = 0.0875 kg CO2 per package)
             const co2Tons = (plasticKg * 2.5) / 1000;
             co2Saved.innerText = co2Tons.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' Ton';
 
-            // Gasoline car km equivalent (~4.032 km per kg CO2 saved)
             const km = Math.round(co2Tons * 1000 * 4.032);
             kmSaved.innerText = km.toLocaleString('pt-BR') + ' km';
         }
@@ -601,20 +594,43 @@
         if (slider) {
             slider.addEventListener('input', updateImpact);
             slider.addEventListener('change', updateImpact);
-            updateImpact(); // Initial call
+            updateImpact();
         }
 
-        // Independent Form Submit Handlers
-        function handleQuoteSubmit(e) {
-            e.preventDefault();
-            document.getElementById('quote-form').classList.add('hidden');
-            document.getElementById('quote-success').classList.remove('hidden');
-        }
+        // Submissão via AJAX para o Formspree sem redirecionamento ou erro de JSON
+        const academicForm = document.getElementById('academic-form');
+        if (academicForm) {
+            academicForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const btn = document.getElementById('academic-submit-btn');
+                btn.disabled = true;
+                btn.innerText = 'Enviando...';
 
-        function handleAcademicSubmit(e) {
-            e.preventDefault();
-            document.getElementById('academic-form').classList.add('hidden');
-            document.getElementById('academic-success').classList.remove('hidden');
+                const formData = new FormData(this);
+
+                try {
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        academicForm.classList.add('hidden');
+                        document.getElementById('academic-success').classList.remove('hidden');
+                    } else {
+                        alert('Ocorreu um erro ao enviar. Verifique se o endpoint do Formspree está ativo.');
+                        btn.disabled = false;
+                        btn.innerText = 'Enviar Feedback Acadêmico';
+                    }
+                } catch (error) {
+                    alert('Erro de conexão ao enviar o formulário.');
+                    btn.disabled = false;
+                    btn.innerText = 'Enviar Feedback Acadêmico';
+                }
+            });
         }
     </script>
 </body>
