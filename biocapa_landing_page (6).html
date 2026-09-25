@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioCapa | Embalagens em Papel Hidrofóbico - Projeto de Graduação B2B</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7f4',
+                            100: '#d7eae2',
+                            200: '#b0d5c5',
+                            500: '#1b4d3e', // Deep forest green
+                            600: '#153e32',
+                            700: '#0f2f26',
+                            accent: '#4ade80', // Eco green accent
+                        },
+                        sand: {
+                            50: '#fdfbf7',
+                            100: '#f7f3eb',
+                            200: '#ebe3d3',
+                            300: '#d9cdb8',
+                            800: '#4a4438',
+                        },
+                        academic: {
+                            50: '#fffbe1',
+                            100: '#fef3c7',
+                            500: '#d97706',
+                            800: '#92400e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fdfbf7;
+            color: #1c2a23;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(253, 251, 247, 0.95) 0%, rgba(215, 234, 226, 0.5) 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(27, 77, 62, 0.12);
+        }
+    </style>
+</head>
+<body class="antialiased text-sand-800">
+
+    <!-- 1. BANNER ACADÊMICO FIXO NO TOPO -->
+    <div class="bg-amber-600 text-white py-2.5 px-4 text-xs sm:text-sm font-semibold text-center shadow-inner sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+            <span class="bg-amber-950/40 text-amber-100 text-[10px] uppercase font-extrabold px-2.5 py-0.5 rounded-full border border-amber-300/30">
+                🎓 Projeto de Graduação em Validação
+            </span>
+            <span>Esta página é parte de uma atividade acadêmica B2B desenvolvida por alunos. Seu feedback nos ajuda a validar o mercado!</span>
+            <a href="#validacao" class="underline hover:text-amber-100 font-bold ml-1 transition-colors">Avaliar Projeto &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="bg-sand-50/90 backdrop-blur-md border-b border-sand-200/80 sticky top-[37px] z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-brand-500 flex items-center justify-center text-white font-bold shadow-md">
+                    <i data-lucide="leaf" class="w-6 h-6 text-brand-accent"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold tracking-tight text-brand-500 block leading-none">BioCapa</span>
+                    <span class="text-[10px] uppercase tracking-widest text-brand-600 font-bold block mt-0.5">Embalagens Hidrofóbicas</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#solucao" class="text-sand-800 hover:text-brand-500 transition-colors">A Solução</a>
+                <a href="#calculadora" class="text-sand-800 hover:text-brand-500 transition-colors">Calculadora ESG</a>
+                <a href="#comparativo" class="text-sand-800 hover:text-brand-500 transition-colors">Prós e Contras</a>
+                <a href="#orcamento" class="text-brand-600 font-bold hover:text-brand-700 transition-colors">Cotação B2B</a>
+                <a href="#validacao" class="text-amber-700 font-bold hover:text-amber-800 transition-colors">Feedback Acadêmico</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="#orcamento" class="hidden sm:inline-flex bg-brand-500 hover:bg-brand-600 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition-all shadow-sm">
+                    Simular Cotação
+                </a>
+                <a href="#validacao" class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition-all shadow-sm flex items-center gap-1.5">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    <span>Avaliar Projeto</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-12 pb-20 md:pt-16 md:pb-28 hero-gradient relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-100 border border-brand-200 text-brand-700 text-xs font-bold uppercase">
+                        <i data-lucide="award" class="w-4 h-4 text-brand-500"></i>
+                        Estudo de Viabilidade B2B • Trabalho de Graduação
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-700 leading-tight">
+                        Reduza a Pegada Ecológica da sua Marca com Embalagens em <span class="text-brand-500 underline decoration-brand-accent decoration-wavy decoration-2">Papel Hidrofóbico</span>
+                    </h1>
+                    <p class="text-lg text-sand-800 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        A BioCapa oferece resistência hídrica superior sem utilizar laminados plásticos, permitindo que indústrias de cosméticos reduzam drasticamente sua pegada de carbono e resíduos.
+                    </p>
+                    <div class="pt-2 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#orcamento" class="bg-brand-500 hover:bg-brand-600 text-white font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg flex items-center justify-center gap-3">
+                            <i data-lucide="file-text" class="w-5 h-5"></i>
+                            Solicitar Cotação B2B
+                        </a>
+                        <a href="#validacao" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-8 py-4 rounded-xl text-base transition-all shadow-md flex items-center justify-center gap-3">
+                            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                            Enviar Feedback Acadêmico
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="glass-card rounded-3xl p-6 shadow-2xl space-y-6 border border-white/60">
+                        <div class="aspect-square bg-gradient-to-br from-sand-100 to-brand-50 rounded-2xl flex flex-col items-center justify-center p-8 relative overflow-hidden shadow-inner">
+                            <div class="w-40 h-52 bg-white rounded-xl shadow-xl border-2 border-brand-200 flex flex-col justify-between p-4 relative group transition-transform hover:scale-105">
+                                <div class="flex justify-between items-center">
+                                    <i data-lucide="droplets" class="w-6 h-6 text-sky-500"></i>
+                                    <span class="text-[9px] font-bold bg-amber-600 text-white px-2 py-0.5 rounded-full">Protótipo</span>
+                                </div>
+                                <div class="text-center py-2">
+                                    <div class="w-10 h-10 rounded-full bg-brand-100 mx-auto mb-2 flex items-center justify-center">
+                                        <i data-lucide="sparkles" class="w-5 h-5 text-brand-500"></i>
+                                    </div>
+                                    <p class="text-xs font-bold text-brand-700">BioCapa Shield</p>
+                                    <p class="text-[9px] text-sand-800">100% Papel Hidrofóbico</p>
+                                </div>
+                                <p class="text-[9px] text-center text-emerald-700 font-semibold bg-emerald-50 py-1 rounded">Sem Plástico PE/PP</p>
+                            </div>
+                        </div>
+                        <div class="text-center space-y-1">
+                            <h3 class="text-sm font-bold text-brand-700">Revestimento Bio-baseado Impermeável</h3>
+                            <p class="text-xs text-sand-800">Desenvolvido para sabonetes líquidos, cremes e cosméticos em ambiente úmido.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution Section -->
+    <section id="solucao" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-xs uppercase font-extrabold tracking-widest text-brand-500">A Solução BioCapa</h2>
+                <p class="text-3xl sm:text-4xl font-bold text-brand-700">Redução Efetiva da Pegada Ecológica na Indústria Cosmética</p>
+                <p class="text-sand-800">Uma transição sem atrito do plástico convencional para o papel de alta barreira, atendendo às exigências ESG de consumidores e corporações.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-red-50/60 border border-red-200 rounded-3xl p-8 space-y-6">
+                    <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center font-bold">
+                        <i data-lucide="alert-octagon" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-red-950">O Desafio do Setor</h3>
+                    <ul class="space-y-4 text-sm text-red-900">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="x-circle" class="w-5 h-5 text-red-500 shrink-0 mt-0.5"></i>
+                            <span><strong>Alta Pegada Plástica:</strong> Frascos plásticos descartáveis demoram mais de 400 anos para se decompor na natureza.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="x-circle" class="w-5 h-5 text-red-500 shrink-0 mt-0.5"></i>
+                            <span><strong>Incompatibilidade do Papel Comum:</strong> Papel sem tratamento absorve umidade no banho, perdendo rigidez e rasgos.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-brand-50/80 border border-brand-200 rounded-3xl p-8 space-y-6">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-500 text-white flex items-center justify-center font-bold shadow-md">
+                        <i data-lucide="check-circle" class="w-6 h-6 text-brand-accent"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-brand-700">Diferencial BioCapa</h3>
+                    <ul class="space-y-4 text-sm text-brand-900">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i>
+                            <span><strong>Barreira Hídrica Bio-baseada:</strong> Repele gotas e umidade sem necessitar de pelotas plásticas (zero PE/PP).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="recycle" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i>
+                            <span><strong>Reciclabilidade e Decomposição Rápida:</strong> Reintegrado totalmente à cadeia de reciclagem de papel ou decomposto em meses.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. CALCULADORA ESG INTERATIVA COM SLIDER -->
+    <section id="calculadora" class="py-20 bg-sand-100 border-y border-sand-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold uppercase">
+                        <i data-lucide="calculator" class="w-4 h-4"></i>
+                        Impacto em Tempo Real
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brand-700">Calculadora de Pegada Ecológica Evitada</h2>
+                    <p class="text-sand-800 text-sm leading-relaxed">
+                        Deslize a barra para simular o volume de embalagens da sua marca e veja em tempo real a economia de plástico, CO₂ e a equivalência em quilômetros rodados.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl border border-sand-200 space-y-8">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <label for="volume-slider" class="font-bold text-brand-700 text-sm">Volume Anual de Embalagens:</label>
+                                <span id="volume-val" class="text-2xl font-extrabold text-brand-500">250.000 un</span>
+                            </div>
+                            <input id="volume-slider" type="range" min="10000" max="1000000" step="10000" value="250000" class="w-full h-3 bg-sand-200 rounded-lg appearance-none cursor-pointer accent-brand-500">
+                            <div class="flex justify-between text-[11px] text-sand-800 font-semibold mt-2">
+                                <span>10.000 un</span>
+                                <span>500.000 un</span>
+                                <span>1.000.000 un</span>
+                            </div>
+                        </div>
+
+                        <!-- Real-time Dynamic Results -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-sand-200">
+                            <div class="bg-brand-50 rounded-2xl p-4 border border-brand-100 text-center space-y-1">
+                                <i data-lucide="trash-2" class="w-6 h-6 text-brand-500 mx-auto"></i>
+                                <span class="text-[11px] uppercase tracking-wider text-sand-800 font-bold block">Plástico Evitado</span>
+                                <span id="plastic-saved" class="text-2xl font-extrabold text-brand-600 block">8.750 kg</span>
+                                <span class="text-[10px] text-sand-800">Menos lixo descartado</span>
+                            </div>
+
+                            <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-100 text-center space-y-1">
+                                <i data-lucide="cloud-off" class="w-6 h-6 text-emerald-600 mx-auto"></i>
+                                <span class="text-[11px] uppercase tracking-wider text-sand-800 font-bold block">CO₂ Evitado</span>
+                                <span id="co2-saved" class="text-2xl font-extrabold text-emerald-700 block">21,9 Ton</span>
+                                <span class="text-[10px] text-sand-800">Pegada de carbono salva</span>
+                            </div>
+
+                            <div class="bg-sky-50 rounded-2xl p-4 border border-sky-100 text-center space-y-1">
+                                <i data-lucide="car" class="w-6 h-6 text-sky-600 mx-auto"></i>
+                                <span class="text-[11px] uppercase tracking-wider text-sand-800 font-bold block">Equivalente em Carro</span>
+                                <span id="km-saved" class="text-2xl font-extrabold text-sky-700 block">88.301 km</span>
+                                <span class="text-[10px] text-sand-800">Km não rodados (gasolina)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TABELA COMPARATIVA / PRÓS E CONTRAS -->
+    <section id="comparativo" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold uppercase">
+                    <i data-lucide="scales" class="w-4 h-4"></i>
+                    Análise Comparativa
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-brand-700">Prós e Contras: BioCapa vs. Alternativas de Mercado</h2>
+                <p class="text-sand-800 text-sm">
+                    Entenda como a BioCapa se posiciona em relação às outras embalagens em termos de pegada ecológica, barreira hídrica e infraestrutura de descarte.
+                </p>
+            </div>
+
+            <!-- Detailed Grid Matrix -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- 1. Plástico Tradicional -->
+                <div class="bg-sand-50 rounded-2xl border border-sand-200 p-6 flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-gray-200 text-gray-700 flex items-center justify-center font-bold mb-4">
+                            <i data-lucide="box" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-700">Plástico Tradicional</h3>
+                        <p class="text-xs text-sand-800 mb-4">(PET, PE, PP)</p>
+                        
+                        <div class="space-y-3 text-xs">
+                            <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-100">
+                                <span class="font-bold text-emerald-800 block mb-1">👍 Prós:</span>
+                                <p class="text-emerald-900">Excelente barreira contra água e baixíssimo custo de produção em escala.</p>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-red-50 border border-red-100">
+                                <span class="font-bold text-red-800 block mb-1">👎 Contras:</span>
+                                <p class="text-red-900">Altíssima pegada ecológica, origem fóssil e leva de 400 a 500 anos para se decompor na natureza.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-sand-200 text-[11px] text-sand-800 space-y-1">
+                        <div><strong>Pegada de Carbono:</strong> Muito Alta</div>
+                        <div><strong>Decomposição:</strong> Centenas de Anos</div>
+                    </div>
+                </div>
+
+                <!-- 2. Bioplásticos (PLA) -->
+                <div class="bg-sand-50 rounded-2xl border border-sand-200 p-6 flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold mb-4">
+                            <i data-lucide="sprout" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-700">Bioplásticos</h3>
+                        <p class="text-xs text-sand-800 mb-4">(PLA / PHA)</p>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-100">
+                                <span class="font-bold text-emerald-800 block mb-1">👍 Prós:</span>
+                                <p class="text-emerald-900">Fonte renovável (milho/cana) e funcionalidade similar ao plástico convencional.</p>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-red-50 border border-red-100">
+                                <span class="font-bold text-red-800 block mb-1">👎 Contras:</span>
+                                <p class="text-red-900">Exige compostagem industrial específica (raras no Brasil) e contamina a reciclagem comum de plástico.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-sand-200 text-[11px] text-sand-800 space-y-1">
+                        <div><strong>Pegada de Carbono:</strong> Média</div>
+                        <div><strong>Decomposição:</strong> Exige Compostagem Ind.</div>
+                    </div>
+                </div>
+
+                <!-- 3. Papel Tradicional -->
+                <div class="bg-sand-50 rounded-2xl border border-sand-200 p-6 flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold mb-4">
+                            <i data-lucide="file" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-700">Papel Comum</h3>
+                        <p class="text-xs text-sand-800 mb-4">(Sem Revestimento)</p>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-100">
+                                <span class="font-bold text-emerald-800 block mb-1">👍 Prós:</span>
+                                <p class="text-emerald-900">Reciclagem consolidada universalmente, biodegradável e percepção ecológica imediata.</p>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-red-50 border border-red-100">
+                                <span class="font-bold text-red-800 block mb-1">👎 Contras:</span>
+                                <p class="text-red-900">Incapaz de resistir à água e umidade, desfazendo-se rapidamente em cosméticos no banho.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-sand-200 text-[11px] text-sand-800 space-y-1">
+                        <div><strong>Pegada de Carbono:</strong> Baixa</div>
+                        <div><strong>Decomposição:</strong> Rápida (3 a 6 meses)</div>
+                    </div>
+                </div>
+
+                <!-- 4. BioCapa (Destaque) -->
+                <div class="bg-brand-50 rounded-2xl border-2 border-brand-500 p-6 flex flex-col justify-between space-y-6 relative shadow-lg">
+                    <span class="absolute -top-3 right-4 bg-brand-500 text-white text-[10px] uppercase font-bold px-3 py-0.5 rounded-full">Inovação BioCapa</span>
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-brand-500 text-white flex items-center justify-center font-bold mb-4">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-brand-accent"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-700">BioCapa Shield</h3>
+                        <p class="text-xs text-brand-600 font-semibold mb-4">(Papel Hidrofóbico)</p>
+
+                        <div class="space-y-3 text-xs">
+                            <div class="p-2.5 rounded-lg bg-emerald-100/70 border border-emerald-200">
+                                <span class="font-bold text-emerald-900 block mb-1">👍 Prós:</span>
+                                <p class="text-emerald-950">Alta barreira hídrica sem PE/PP, reciclabilidade universal, decomposição rápida e redução drasticamente da pegada ecológica.</p>
+                            </div>
+                            <div class="p-2.5 rounded-lg bg-amber-100/70 border border-amber-200">
+                                <span class="font-bold text-amber-900 block mb-1">⚠️ Ponto em Estudo:</span>
+                                <p class="text-amber-950">Fase atual de validação de custo em grande escala industrial (foco deste projeto).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-brand-200 text-[11px] text-brand-900 space-y-1 font-semibold">
+                        <div><strong>Pegada de Carbono:</strong> Mínima</div>
+                        <div><strong>Decomposição:</strong> Rápida e Natural</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SEÇÃO SEPARADA 1: SIMULAÇÃO E COTAÇÃO B2B -->
+    <section id="orcamento" class="py-20 bg-sand-100 border-t border-sand-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-12 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-bold uppercase">
+                    <i data-lucide="file-check" class="w-4 h-4"></i>
+                    Área Comercial B2B
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-brand-700">Solicitação de Orçamento e Amostras Comercial</h2>
+                <p class="text-sand-800 text-sm">
+                    Preencha os dados abaixo para simular valores e solicitar protótipos para a sua marca de cosméticos.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 sm:p-12 border border-sand-200 shadow-xl max-w-4xl mx-auto">
+                <form id="quote-form" onsubmit="handleQuoteSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-brand-700 mb-2">Nome do Responsável *</label>
+                            <input type="text" required placeholder="Seu nome" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm bg-sand-50">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-brand-700 mb-2">Nome da Empresa / Marca *</label>
+                            <input type="text" required placeholder="Sua empresa cosmética" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm bg-sand-50">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-brand-700 mb-2">E-mail Corporativo *</label>
+                            <input type="email" required placeholder="contato@empresa.com.br" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm bg-sand-50">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-brand-700 mb-2">Telefone / WhatsApp *</label>
+                            <input type="tel" required placeholder="(11) 99999-9999" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm bg-sand-50">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-brand-700 mb-2">Tipo de Embalagem Desejada *</label>
+                            <select required class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm bg-sand-50">
+                                <option value="">Selecione...</option>
+                                <option>Cartucho para Sabonetes / Shampoos Sólidos</option>
+                                <option>Frasco de Papel para Cremes</option>
+                                <option>Embalagem Secundária Hidrofóbica</option>
+                                <option>Desenvolvimento Sob Medida</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-brand-700 mb-2">Volume Estimado do Lote *</label>
+                            <select required class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm bg-sand-50">
+                                <option value="">Selecione o lote...</option>
+                                <option>Lote Amostra (1.000 a 10.000 un)</option>
+                                <option>Médio Lote (10.000 a 100.000 un)</option>
+                                <option>Lote Industrial (100.000+ un)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-brand-700 mb-2">Especificações Técnicas ou Observações Comerciais</label>
+                        <textarea rows="3" placeholder="Descreva dimensões, tipo de gravação/impressão ou requisitos do produto..." class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm bg-sand-50"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-4 rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        Enviar Solicitação de Orçamento
+                    </button>
+                </form>
+
+                <div id="quote-success" class="hidden text-center py-8 space-y-4">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                        <i data-lucide="check" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-brand-700">Solicitação de Orçamento Registrada!</h3>
+                    <p class="text-sm text-sand-800">Obrigado pelo interesse comercial. Esta simulação foi gravada como parte do estudo de viabilidade do nosso projeto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SEÇÃO SEPARADA 2: VALIDAÇÃO E FEEDBACK ACADÊMICO -->
+    <section id="validacao" class="py-20 bg-amber-500/10 border-t border-amber-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-12 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase">
+                    <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                    Validação Acadêmica do Projeto
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-brand-700">Avaliação & Feedback dos Professores e Especialistas</h2>
+                <p class="text-sand-800 text-sm">
+                    Esta área é destinada exclusivamente a professores, avaliadores e profissionais de P&D/Sustentabilidade para deixarem pareceres sobre o trabalho dos alunos.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-8 sm:p-12 border border-amber-200 shadow-xl max-w-4xl mx-auto">
+                <form id="academic-form" onsubmit="handleAcademicSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-brand-700 mb-2">Seu Nome *</label>
+                            <input type="text" required placeholder="Seu nome completo" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-sand-50">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-brand-700 mb-2">Seu Perfil / Cargo *</label>
+                            <select required class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-sand-50">
+                                <option value="">Selecione seu perfil...</option>
+                                <option>Professor / Orientador Acadêmico</option>
+                                <option>Especialista da Indústria Cosmética</option>
+                                <option>Gerente de P&D ou Sustentabilidade/ESG</option>
+                                <option>Estudante de Graduação ou Pós</option>
+                                <option>Outro Avaliador</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-brand-700 mb-2">Como você avalia a viabilidade da BioCapa para a redução da pegada ecológica? *</label>
+                        <select required class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-sand-50">
+                            <option value="">Escolha uma nota...</option>
+                            <option>Excelente - Potencial real de mercado e alto valor ecológico</option>
+                            <option>Boa - Promissor, depende de adequação de custos industriais</option>
+                            <option>Regular - Necessita de mais testes de barreira física</option>
+                            <option>Baixa - Vejo gargalos difíceis de superação técnica</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-brand-700 mb-2">Comentários, Críticas e Sugestões para o Grupo *</label>
+                        <textarea required rows="4" placeholder="Deixe suas observações para colaborar com o aprimoramento do nosso trabalho de graduação..." class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-sand-50"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                        <i data-lucide="message-square" class="w-4 h-4"></i>
+                        Enviar Feedback Acadêmico
+                    </button>
+                </form>
+
+                <div id="academic-success" class="hidden text-center py-8 space-y-4">
+                    <div class="w-16 h-16 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center mx-auto">
+                        <i data-lucide="check" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-brand-700">Feedback Registrado com Sucesso!</h3>
+                    <p class="text-sm text-sand-800">Muito obrigado pela sua colaboração acadêmica! Suas observações farão parte do relatório de validação do projeto de graduação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-700 text-white py-12 border-t border-brand-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex items-center justify-center space-x-2">
+                <div class="w-8 h-8 rounded-full bg-brand-500 flex items-center justify-center text-white font-bold">
+                    <i data-lucide="leaf" class="w-4 h-4 text-brand-accent"></i>
+                </div>
+                <span class="text-xl font-extrabold tracking-tight">BioCapa</span>
+            </div>
+            <p class="text-xs text-brand-200">
+                Atividade Acadêmica de Graduação • Estudo de Embalagens de Papel Hidrofóbico
+            </p>
+            <p class="text-[11px] text-brand-200/70">
+                &copy; 2026 BioCapa - Projeto de Graduação. Desenvolvido para fins de pesquisa e validação B2B.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Dynamic Real-Time Calculator
+        const slider = document.getElementById('volume-slider');
+        const volumeVal = document.getElementById('volume-val');
+        const plasticSaved = document.getElementById('plastic-saved');
+        const co2Saved = document.getElementById('co2-saved');
+        const kmSaved = document.getElementById('km-saved');
+
+        function updateImpact() {
+            if (!slider) return;
+            const volume = parseInt(slider.value, 10);
+
+            // Volume label
+            volumeVal.innerText = volume.toLocaleString('pt-BR') + ' un';
+
+            // Plastic Saved (~35 grams per package)
+            const plasticKg = (volume * 35) / 1000;
+            plasticSaved.innerText = plasticKg.toLocaleString('pt-BR', { maximumFractionDigits: 0 }) + ' kg';
+
+            // CO2 Saved (~2.5 kg CO2 saved per kg plastic = 0.0875 kg CO2 per package)
+            const co2Tons = (plasticKg * 2.5) / 1000;
+            co2Saved.innerText = co2Tons.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' Ton';
+
+            // Gasoline car km equivalent (~4.032 km per kg CO2 saved)
+            const km = Math.round(co2Tons * 1000 * 4.032);
+            kmSaved.innerText = km.toLocaleString('pt-BR') + ' km';
+        }
+
+        if (slider) {
+            slider.addEventListener('input', updateImpact);
+            slider.addEventListener('change', updateImpact);
+            updateImpact(); // Initial call
+        }
+
+        // Independent Form Submit Handlers
+        function handleQuoteSubmit(e) {
+            e.preventDefault();
+            document.getElementById('quote-form').classList.add('hidden');
+            document.getElementById('quote-success').classList.remove('hidden');
+        }
+
+        function handleAcademicSubmit(e) {
+            e.preventDefault();
+            document.getElementById('academic-form').classList.add('hidden');
+            document.getElementById('academic-success').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
